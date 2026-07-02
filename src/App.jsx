@@ -26,6 +26,7 @@ import {
   processSteps,
   progress,
   seoMap,
+  serviceDetails,
   serviceCapabilities,
   services,
   specialtyCards,
@@ -39,7 +40,7 @@ const SiteContentContext = createContext({
   team,
   faqs,
   stats,
-  serviceDetails: [],
+  serviceDetails,
   testimonials: [
     {
       name: 'Siddhant',
@@ -94,18 +95,24 @@ function DesktopNavItem({ item, path }) {
   return (
     <div className="nav-dropdown">
       <a className={`nav-link nav-dropdown-trigger ${path.startsWith('/services') ? 'active' : ''}`} href={item.path}>
-        Services <span aria-hidden="true">+</span>
+        Services <ChevronDown size={14} className="dropdown-icon" aria-hidden="true" />
       </a>
       <div className="services-menu" role="menu" aria-label="Services menu">
-        {dynamicServices.map((service) => (
-          <a
-            key={service.slug}
-            href={`/services/${service.slug}`}
-            role="menuitem"
-          >
-            {service.title}
-          </a>
-        ))}
+        <div className="services-menu-grid">
+          {dynamicServices.map((service) => (
+            <a
+              key={service.slug}
+              href={`/services/${service.slug}`}
+              className="services-menu-item services-menu-item--title-only"
+              role="menuitem"
+            >
+              <span className="service-title">{service.title}</span>
+            </a>
+          ))}
+        </div>
+        <a className="services-menu-link-more" href="/services">
+          Explore all services
+        </a>
       </div>
     </div>
   )
@@ -113,11 +120,13 @@ function DesktopNavItem({ item, path }) {
 
 function Header({ path }) {
   const [open, setOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const { services: dynamicServices } = useSiteContent()
 
   return (
     <header className="site-header">
       <nav className="site-container nav-shell">
-        <div className="hidden flex-1 items-center justify-end gap-8 lg:flex">
+        <div className="hidden flex-1 items-center justify-end gap-8 lg:flex ">
           {navItems.slice(0, 3).map((item) => (
             <DesktopNavItem key={item.path} item={item} path={path} />
           ))}
@@ -125,7 +134,7 @@ function Header({ path }) {
 
         <Logo />
 
-        <div className="hidden flex-1 items-center gap-8 lg:flex">
+        <div className="hidden flex-1 items-center gap-6 lg:flex ">
           {navItems.slice(3).map((item) => (
             <DesktopNavItem key={item.path} item={item} path={path} />
           ))}
@@ -144,7 +153,7 @@ function Header({ path }) {
       {open && (
         <div className="fixed inset-0 z-50 bg-slate-950/50 lg:hidden" onClick={() => setOpen(false)}>
           <div
-            className="ml-auto flex h-full w-80 max-w-[86vw] flex-col gap-3 bg-white p-6 shadow-panel"
+            className="ml-auto flex h-full w-80 max-w-[86vw] flex-col gap-3 bg-white p-6 shadow-panel transition-transform duration-300 ease-in-out transform translate-x-0"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mb-6 flex items-center justify-between">
@@ -158,15 +167,57 @@ function Header({ path }) {
                 <X size={22} />
               </button>
             </div>
-            {navItems.map((item) => (
-              <a
-                key={item.path}
-                className={`rounded-md px-3 py-3 font-bold ${path === item.path ? 'bg-soft text-brand' : 'text-slate-900'}`}
-                href={item.path}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              if (item.path !== '/services') {
+                return (
+                  <a
+                    key={item.path}
+                    className={`rounded-md px-4 py-3 font-semibold transition-all duration-200 ${
+                      path === item.path
+                        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md'
+                        : 'text-slate-700 hover:bg-blue-50 hover:text-blue-600'
+                    }`}
+                    href={item.path}
+                  >
+                    {item.label}
+                  </a>
+                )
+              }
+
+              return (
+                <div key={item.path} className="mobile-nav-group">
+                  <button
+                    type="button"
+                    className={`mobile-nav-toggle rounded-md px-4 py-3 font-semibold transition-all duration-200 ${
+                      path.startsWith('/services')
+                        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-md'
+                        : 'text-slate-700 bg-slate-50 hover:bg-blue-50 hover:text-blue-600'
+                    }`}
+                    aria-expanded={servicesOpen}
+                    aria-controls="mobile-services-list"
+                    onClick={() => setServicesOpen((prev) => !prev)}
+                  >
+                    <span>{item.label}</span>
+                    <ChevronDown size={18} className={servicesOpen ? 'mobile-chevron open' : 'mobile-chevron'} aria-hidden="true" />
+                  </button>
+                  {servicesOpen && (
+                    <div id="mobile-services-list" className="mobile-services-submenu">
+                      {dynamicServices.map((service) => (
+                        <a
+                          key={service.slug}
+                          href={`/services/${service.slug}`}
+                          className={`rounded-md px-4 py-3 text-slate-700 transition-colors duration-200 hover:bg-slate-100 ${
+                            path === `/services/${service.slug}` ? 'bg-slate-100 font-semibold text-blue-700' : ''
+                          }`}
+                        >
+                          {service.title}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       )}
@@ -1281,7 +1332,7 @@ function App() {
     team,
     faqs,
     stats,
-    serviceDetails: [],
+    serviceDetails,
     testimonials: [
       {
         name: 'Siddhant',

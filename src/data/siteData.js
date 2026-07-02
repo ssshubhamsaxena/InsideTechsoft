@@ -38,6 +38,75 @@ export const company = {
   hours: '10:00 - 18:00',
 }
 
+export const serviceDetails = [
+  {
+    slug: 'software-development',
+    title: 'Professional Software Development',
+    subtitle: 'Software Development',
+    description:
+      'Designing and building custom software solutions to automate workflows, integrate systems, and accelerate growth. We deliver end-to-end development from discovery through maintenance.',
+    image: 'https://images.unsplash.com/photo-1526378721071-3e0c4b1f6f6d?auto=format&fit=crop&w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80',
+    highlights: 'Scalable Architecture|Agile Delivery|Robust Testing',
+    order: 0,
+  },
+  {
+    slug: 'web-development',
+    title: 'Web Development',
+    subtitle: 'Web Development',
+    description:
+      'Building fast, accessible, and responsive websites and web applications tailored to your brand and users. We create performant frontends and reliable backends.',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80',
+    highlights: 'Responsive UI|Performance Optimized|SEO Ready',
+    order: 1,
+  },
+  {
+    slug: 'analytic-solutions',
+    title: 'Analytic Solutions',
+    subtitle: 'Analytic Solutions',
+    description:
+      'Turn data into insight with dashboards, reporting, and analytics platforms that surface actionable metrics and trends for smarter decisions.',
+    image: 'https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1400&q=80',
+    highlights: 'Data Engineering|Interactive Dashboards|KPIs & Reports',
+    order: 2,
+  },
+  {
+    slug: 'cloud-hosting',
+    title: 'Cloud Hosting',
+    subtitle: 'Cloud Hosting',
+    description:
+      'Managed cloud hosting with high availability, backups, and security best practices so your applications stay reliable and performant.',
+    image: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1400&q=80',
+    highlights: 'Auto-scaling|Secure Backups|24/7 Monitoring',
+    order: 3,
+  },
+  {
+    slug: 'product-design',
+    title: 'Product Design',
+    subtitle: 'Product Design',
+    description:
+      'Crafting intuitive product experiences through user research, interaction design, and high-fidelity prototyping focused on usability and conversion.',
+    image: 'https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1400&q=80',
+    highlights: 'UX Research|Prototyping|Design Systems',
+    order: 4,
+  },
+  {
+    slug: 'it-consulting',
+    title: 'IT Consulting',
+    subtitle: 'IT Consulting',
+    description:
+      'Expert IT strategy and advisory services to modernize systems, optimize costs, and design roadmaps that meet your business objectives.',
+    image: 'https://images.unsplash.com/photo-1526378721071-3e0c4b1f6f6d?auto=format&fit=crop&w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1526378721071-3e0c4b1f6f6d?auto=format&fit=crop&w=1400&q=80',
+    highlights: 'Strategy|Architecture|Roadmaps',
+    order: 5,
+  },
+]
+
 export const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
@@ -217,6 +286,26 @@ export const seoMap = {
   '/services/software-development': {
     title: 'Software Development Services | InsideTech Softwares',
     description: 'Custom software development and automation services from InsideTech Softwares for scalable business systems.',
+  },
+  '/services/web-development': {
+    title: 'Web Development Services | InsideTech Softwares',
+    description: 'Responsive web development, e-commerce and frontend/backend solutions to grow your online presence.',
+  },
+  '/services/analytic-solutions': {
+    title: 'Analytic Solutions | InsideTech Softwares',
+    description: 'Data analytics, dashboards and reporting to help you make better business decisions.',
+  },
+  '/services/cloud-hosting': {
+    title: 'Cloud Hosting Services | InsideTech Softwares',
+    description: 'Secure, scalable cloud hosting and infrastructure management for production-ready applications.',
+  },
+  '/services/product-design': {
+    title: 'Product Design Services | InsideTech Softwares',
+    description: 'User-centered product design, UX/UI and prototyping to build delightful digital experiences.',
+  },
+  '/services/it-consulting': {
+    title: 'IT Consulting | InsideTech Softwares',
+    description: 'Strategic IT consulting to align technology, processes, and teams with your business goals.',
   },
   '/our-team': {
     title: 'Our Team | InsideTech Softwares',
