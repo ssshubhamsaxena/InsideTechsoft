@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # InsideTechSoft MERN Website
 
 React + Vite + Tailwind CSS frontend with an Express/MongoDB backend scaffold for contact and quote leads.
@@ -84,3 +85,7 @@ Relationships:
 
 - `Blog.author` references `User`.
 - `Comment.blogId` references `Blog`.
+=======
+# InsideTechsoft
+this is general business informative website
+>>>>>>> 7877383961cf3b757900d99f2bb168591f9bfaf1
